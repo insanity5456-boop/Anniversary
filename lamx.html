@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Anniversary 💖</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .letter {
+      background: #fffafc;
+      border: 2px solid #ffc0cb;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .typing::after {
+      content: "|";
+      animation: blink 1s infinite;
+      margin-left: 3px;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4">
+
+  <div class="letter rounded-2xl p-6 sm:p-8 max-w-md w-full text-center">
+    
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-500 mb-4">
+      💖 Happy Anniversary 💖
+    </h1>
+
+    <p class="text-gray-500 mb-4 italic">To my love, Shaila 💌</p>
+
+    <p class="text-gray-600 italic text-sm mb-4">
+      "Every love story is beautiful, but ours is my favorite."
+    </p>
+
+    <button onclick="startLetter()" class="mt-4 mb-4 px-6 py-3 bg-pink-500 text-white rounded-xl shadow hover:bg-pink-600 transition">
+      Open Letter 💌
+    </button>
+
+    <div id="letterBox" class="text-left text-gray-700 text-sm sm:text-base whitespace-pre-line hidden typing"></div>
+
+    <p class="mt-4 text-right text-pink-500 font-semibold hidden" id="signature">
+      — Nitin 💖
+    </p>
+
+  </div>
+
+  <script>
+    const message = `My baby, my sweetheart—we finally did it. It’s been a year. IT’S A YEAR, and I’m so happy. I’m more than happy to be yours in this journey of us together, my sweetheart.
+
+It’s been so much—it was a roller coaster we had to go through to be here. From breaking up 3 years ago because of my stupidity, to slowly progressing towards our future together. It’s been happy, it’s been rough, it’s been sad, it’s been chaotic—but in every scenario, I would always choose you.
+
+You taught me how to be confident, how to be better, and you carried me all the way up. My sweetheart, I cannot thank you enough for doing so much for me.
+
+From the day we met at 6:05 PM, when you joined me and asked for my socials—everything changed. From your parents catching us, to us playing Doors for hours, to us playing Adopt Me, to switching games, to our movie era… even the way we argued—through all those moments, I will forever choose you and only you.
+
+I love you so much, my darling. Please be with me forever. You’re my greatest treasure, and I will cherish you forever.
+
+Happy 1-year anniversary, my Shaila. I love you. 💖`;
+
+    let index = 0;
+
+    function startLetter() {
+      document.getElementById("letterBox").classList.remove("hidden");
+      document.getElementById("letterBox").innerHTML = "";
+      document.getElementById("signature").classList.add("hidden");
+      index = 0;
+
+      typeWriter();
+
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function typeWriter() {
+      if (index < message.length) {
+        document.getElementById("letterBox").innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 25);
+      } else {
+        document.getElementById("signature").classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>
